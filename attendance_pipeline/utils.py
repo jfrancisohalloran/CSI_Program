@@ -67,10 +67,10 @@ def get_level_from_room(assigned_room: str, place: str) -> str | None:
         return None
 
     if place == "ECEC":
-        if re.search(r"\bCamp\b", assigned_room, re.IGNORECASE):
+        if re.search(r"\b(?:Camp|Zoo Trip)\b", assigned_room, re.IGNORECASE):
             logger.debug("get_level_from_room: mapping %s to Preschool", assigned_room)
             return "Preschool"
-        
+
         m = re.search(r"(Infant|Toddlers?|Multi[-\s]?Age|Preschool|Pre[-\s]?K)",
                       assigned_room, re.IGNORECASE)
         if m:
